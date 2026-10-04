@@ -1,0 +1,15 @@
+---
+layout: default
+title: Categories
+permalink: /categories/
+---
+<section class="page-head"><div class="eyebrow">Browse</div><h1>Categories</h1><p>Research and engineering articles grouped by topic.</p></section>
+<div class="category-grid">
+{% assign category_names = "Robot Foundation Models|Robot Learning|Reinforcement Learning|Humanoid Robotics|Manipulation|Engineering" | split: "|" %}
+{% for cat in category_names %}
+  {% assign cat_posts = site.categories[cat] %}
+  <a class="category-card" href="{{ '/categories/' | append: cat | slugify | append: '/' | relative_url }}">
+    <span>{{ cat }}</span><strong>{{ cat_posts | size }}</strong>
+  </a>
+{% endfor %}
+</div>

@@ -1,0 +1,30 @@
+title: "slee956k"
+description: "Robotics, Physical AI, robot learning, and engineering notes"
+url: "https://slee956k.github.io"
+baseurl: ""
+lang: en
+markdown: kramdown
+permalink: /posts/:title/
+timezone: America/New_York
+
+collections:
+  notes:
+    output: true
+    permalink: /notes/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: notes
+    values:
+      layout: note
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

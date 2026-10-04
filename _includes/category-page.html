@@ -1,0 +1,14 @@
+<section class="page-head"><div class="eyebrow">Category</div><h1>{{ page.category }}</h1><p>Articles filed under {{ page.category }}.</p></section>
+<div class="post-list category-list">
+{% assign found = false %}
+{% for post in site.posts %}
+  {% if post.categories contains page.category %}
+    {% assign found = true %}
+    <a class="post-row" href="{{ post.url | relative_url }}">
+      <div><strong>{{ post.title }}</strong><small>{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</small></div>
+      <time>{{ post.date | date: "%Y.%m.%d" }}</time>
+    </a>
+  {% endif %}
+{% endfor %}
+{% unless found %}<p class="empty-state">No articles yet. New posts in this category will appear here automatically.</p>{% endunless %}
+</div>

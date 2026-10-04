@@ -1,0 +1,12 @@
+---
+layout: default
+title: Notes
+permalink: /notes/
+---
+<section class="page-head"><div class="eyebrow">Research Notebook</div><h1>Notes</h1><p>Shorter technical notes, implementation details, and ChatGPT-assisted research summaries.</p></section>
+<div class="post-list category-list">
+{% assign sorted_notes = site.notes | sort: 'date' | reverse %}
+{% for note in sorted_notes %}
+<a class="post-row" href="{{ note.url | relative_url }}"><div><strong>{{ note.title }}</strong><small>{{ note.description }}</small></div><time>{{ note.date | date: "%Y.%m.%d" }}</time></a>
+{% endfor %}
+</div>

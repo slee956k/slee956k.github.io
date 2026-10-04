@@ -1,0 +1,72 @@
+---
+layout: default
+title: Home
+---
+<section class="hero">
+  <div class="hero-mark">SL</div>
+  <div>
+    <h1>S. Lee</h1>
+    <p class="hero-subtitle">Robotics · Physical AI · Robot Learning</p>
+    <div class="hero-links">
+      <a href="https://github.com/slee956k">GitHub</a>
+      <a href="{{ '/categories/' | relative_url }}">Categories</a>
+      <a href="{{ '/notes/' | relative_url }}">Notes</a>
+    </div>
+  </div>
+</section>
+
+<section class="collapsible-stack" aria-label="Home sections">
+  <details class="home-panel">
+    <summary>About <span>Profile & focus</span></summary>
+    <div class="panel-content">
+      <p>I work on robotics and Physical AI, with a focus on robot learning, manipulation, reinforcement learning, humanoid systems, and scalable deployment.</p>
+      <p>This site is a compact research notebook and technical blog for long-form articles, implementation notes, experiments, and selected projects.</p>
+    </div>
+  </details>
+
+  <details class="home-panel">
+    <summary>Research Interests <span>Current themes</span></summary>
+    <div class="panel-content interest-grid">
+      <a class="topic-card" href="{{ '/categories/robot-foundation-models/' | relative_url }}"><strong>Robot Foundation Models</strong><small>VLA, multimodal policies, generalist robotics</small></a>
+      <a class="topic-card" href="{{ '/categories/robot-learning/' | relative_url }}"><strong>Robot Learning</strong><small>BC, diffusion, flow matching, DiT</small></a>
+      <a class="topic-card" href="{{ '/categories/reinforcement-learning/' | relative_url }}"><strong>Reinforcement Learning</strong><small>PPO, SAC, residual RL, constraints</small></a>
+      <a class="topic-card" href="{{ '/categories/humanoid-robotics/' | relative_url }}"><strong>Humanoid Robotics</strong><small>Locomotion, manipulation, whole-body control</small></a>
+      <a class="topic-card" href="{{ '/categories/manipulation/' | relative_url }}"><strong>Manipulation</strong><small>Grasping, insertion, assembly</small></a>
+      <a class="topic-card" href="{{ '/categories/engineering/' | relative_url }}"><strong>Engineering</strong><small>Simulation, ROS 2, deployment, tooling</small></a>
+    </div>
+  </details>
+
+  <details class="home-panel">
+    <summary>Featured Research / Projects <span>Selected work</span></summary>
+    <div class="panel-content card-grid">
+      <article class="feature-card"><div class="eyebrow">VLA</div><h3>Vision-Language-Action Models</h3><p>Architectures, training recipes, spatial representations, and deployment notes.</p><a href="{{ '/categories/robot-foundation-models/' | relative_url }}">Explore →</a></article>
+      <article class="feature-card"><div class="eyebrow">RL</div><h3>Residual Reinforcement Learning</h3><p>BC nominal policies with learned residuals for robust contact-rich manipulation.</p><a href="{{ '/categories/reinforcement-learning/' | relative_url }}">Explore →</a></article>
+      <article class="feature-card"><div class="eyebrow">Humanoid</div><h3>Whole-Body Manipulation</h3><p>Control and learning for coordinated locomotion and manipulation.</p><a href="{{ '/categories/humanoid-robotics/' | relative_url }}">Explore →</a></article>
+    </div>
+  </details>
+
+  <details class="home-panel">
+    <summary>Recent Posts <span>Latest articles</span></summary>
+    <div class="panel-content post-list">
+      {% for post in site.posts limit: 6 %}
+      <a class="post-row" href="{{ post.url | relative_url }}">
+        <div><strong>{{ post.title }}</strong><small>{{ post.description | default: post.excerpt | strip_html | truncate: 110 }}</small></div>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
+      </a>
+      {% endfor %}
+    </div>
+  </details>
+
+  <details class="home-panel">
+    <summary>Recent Notes <span>Short technical notes</span></summary>
+    <div class="panel-content post-list">
+      {% assign sorted_notes = site.notes | sort: 'date' | reverse %}
+      {% for note in sorted_notes limit: 6 %}
+      <a class="post-row" href="{{ note.url | relative_url }}">
+        <div><strong>{{ note.title }}</strong><small>{{ note.description }}</small></div>
+        <time>{{ note.date | date: "%b %d, %Y" }}</time>
+      </a>
+      {% endfor %}
+    </div>
+  </details>
+</section>
